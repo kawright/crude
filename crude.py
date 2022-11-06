@@ -1,12 +1,13 @@
 """
-CRUDE is a descriptive ORM that allows you to access your entire database
-programmatically with just a few lines, without having to define any schemas
-or write any SQL commands.
+Crude is a simple, lightweight ORM for Python which owes its ease-of-use to the
+fact that it is a _descriptive_ ORM rather than a _prescriptive_ one. What does
+that mean? It means you can access your entire database programmatically with 
+just a few lines, without having to define any schemas or write any SQL 
+commands.
 
-Visit https://crudepy.org for more information.
+Visit https://crudepy.org for official documentation and additional information.
 
 Copyright (c) 2022 Kristoffer A. Wright
-License: GPL (Please see LICENSE for the full license text)
 """
 
 ################################################################################
@@ -14,7 +15,7 @@ License: GPL (Please see LICENSE for the full license text)
 ################################################################################
 
 __author__ = "Kristoffer A. Wright"
-__version__ = "1.0.0"
+__version__ = "1.0.4"
 __license__ = "MIT"
 
 ################################################################################
@@ -29,7 +30,7 @@ from typing import Any
 ################################################################################
 
 class CrudeError(Exception):
-    """Base class for all other custom exceptions used by CRUDE."""
+    """Base class for all other custom exceptions used by Crude."""
     pass
 
 class ConnectionFailure(CrudeError):
@@ -70,7 +71,7 @@ class TableTemplate:
     """
     pass
 
-class TableBuilder:
+class TableMetaclass:
     """
     This is a factory class which is used to dynamically create classes for
     tables on this database. These classes can be used to instantiate single
@@ -514,7 +515,7 @@ property_methods['deleter'] = _{column}_deleter
 # Factories ####################################################################
 ################################################################################
 
-def connect(path: str) -> TableBuilder:
+def connect(path: str) -> TableMetaclass:
 
     # Attempt to open the database to make sure the given path is valid:
     try:
@@ -523,4 +524,4 @@ def connect(path: str) -> TableBuilder:
         raise ConnectionFailure("Could not connect to the database.")
 
     connection.close()
-    return TableBuilder(path)
+    return TableMetaclass(path)

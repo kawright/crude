@@ -6,7 +6,7 @@ automatically generate an API in which you can interact with your data in an
 object-oriented manner:
 
 ```python
-from crude import connect
+from crude-orm import connect
 
 table_builder = connect("./mydatabase.db")          # Your SQLite Database
 MyTable = table_builder.create("mytable")           # A table in your database
@@ -15,11 +15,11 @@ value = my_record.myTextColumn                      # Read from DB
 my_record.myTextColumn = "Hello, world"             # Write to DB
 ```
 
-Crude currently supports all CRUD operations on Sqlite databases. Further
+Krude currently supports all CRUD operations on Sqlite databases. Further
 operations and database engines will be supported soon.
 
 # Download and Install
-The latest stable version of Crude can be installed using `pip install crude`.
+The latest stable version of Krude can be installed using `pip install krude`.
 You may also download all releases from the official GitHub repository.
 
 # Homepage and Documentation
