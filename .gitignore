@@ -71,6 +71,7 @@ instance/
 # Sphinx documentation
 docs/_build/
 
+
 # PyBuilder
 target/
 
@@ -127,3 +128,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+test_data
+.vscode

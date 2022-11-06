@@ -1,2 +1,27 @@
-# crude
-A descriptive ORM for Python
+# Crude: A Descriptive ORM for Python
+Crude is a simple, lightweight ORM for Python which owes its ease-of-use to the
+fact that it is a _descriptive_ ORM rather than a _prescriptive_ one. What does
+that mean? It means you can connect to your existing database, and Crude will
+automatically generate an API in which you can interact with your data in an
+object-oriented manner:
+
+```python
+from crude import connect
+
+table_builder = connect("./mydatabase.db")          # Your SQLite Database
+MyTable = table_builder.create("mytable")           # A table in your database
+my_record = Mytable.load(myPrimaryKeyColumn=1)      # Load using primary key(s)  
+value = my_record.myTextColumn                      # Read from DB
+my_record.myTextColumn = "Hello, world"             # Write to DB
+```
+
+Crude currently supports all CRUD operations on Sqlite databases. Further
+operations and database engines will be supported soon.
+
+# Download and Install
+The latest stable version of Crude can be installed using `pip install crude`.
+You may also download all releases from the official GitHub repository.
+
+# Homepage and Documentation
+The official Crude homepage, as well as the latest API documentation, can be
+found at https://crudepy.org
